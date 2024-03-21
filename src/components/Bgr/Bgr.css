@@ -1,0 +1,303 @@
+:root{
+  --color1: linear-gradient(to right, rgb(71, 175, 255), rgb(233, 66, 255));
+  --color2: linear-gradient(to right, rgb(36, 189, 255), rgb(200, 0, 255));
+  --color3: linear-gradient(to right, rgb(128, 200, 255), rgb(255, 0, 208));
+  /* linear-gradient(170deg, rgba(228,10,61), rgba(86,5,42), rgba(80, 140, 158)); */
+  /* linear-gradient(285deg, rgba(253,9,71), rgba(196,244,185), rgba(21, 93, 135)); */
+  /* linear-gradient(247deg, rgba(244,240,188), rgba(109,40,124), rgba(154, 36, 29)); */
+  --color4: linear-gradient(170deg, rgba(228,10,61), rgb(181, 56, 112), rgb(255, 0, 179));
+  --color5: linear-gradient(285deg, rgba(253,9,71), rgb(255, 111, 0), rgb(251, 235, 9));
+  --color6: linear-gradient(247deg, rgba(244,240,188), rgb(210, 8, 255), rgb(140, 0, 234));
+}
+
+.background{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  background-color: #e0fbfc ;
+}
+
+.background div{
+  width: 65vmin;
+  height: 65vmin;
+  border-radius:65vmin ;
+  backface-visibility: hidden;
+  position: absolute;
+  animation: move;
+  animation-duration: 42s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.background div:nth-child(1){
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color1);
+  top: 100%;
+  left: 56%;
+  animation-duration: 21s;
+  transform-origin: 12vw -1vh;
+}
+
+.background div:nth-child(2){
+  background: var(--color2);
+  color: #583C87;
+  top: 39%;
+  left: 19%;
+  animation-duration: 20s;
+  transform-origin: 2vw 25vh;
+}
+
+.background div:nth-child(3){
+  background: var(--color3);
+  top: 81%;
+  left: 86%;
+  animation-duration: 61s;
+  transform-origin: -20vw -11vh;
+}
+
+.background div:nth-child(4){
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color4);
+  top: 50%;
+  left: 87%;
+  animation-duration: 27s;
+  transform-origin: -22vw 0vh;
+}
+
+.background div:nth-child(5){
+  background: var(--color5);
+  top: 7%;
+  left: 91%;
+  animation-duration: 50s;
+  transform-origin: 2vw -16vh;
+}
+
+.background div:nth-child(6){
+  background: var(--color6);
+  top: 105%;
+  left: 33%;
+  animation-duration: 29s;
+  transform-origin: -16vw 11vh;
+}
+
+.background div:nth-child(7){
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color1);
+  top: 79%;
+  left: 35%;
+  animation-duration: 55s;
+  transform-origin: -20vw 24vh;
+}
+
+.background div:nth-child(8){
+  background: var(--color2);
+  top: 14%;
+  left: 86%;
+  animation-duration: 74s;
+  transform-origin: -3vw 13vh;
+}
+
+.background div:nth-child(9){
+  background: var(--color3);
+  top: 65%;
+  left: 71%;
+  animation-duration: 43s;
+  transform-origin: -23vw 21vh;
+}
+
+.background div:nth-child(10){
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color4);
+  top: 22%;
+  left: 64%;
+  animation-duration: 63s;
+  transform-origin: -9vw -1vh;
+}
+
+.background div:nth-child(11){
+  background: var(--color5);
+  top: 75%;
+  left: 20%;
+  animation-duration: 51s;
+  transform-origin: 0vw 19vh;
+}
+
+.background div:nth-child(12){
+  background: var(--color6);
+  top: 1%;
+  left: 3%;
+  animation-duration: 52s;
+  transform-origin: -2vw -9vh;
+}
+
+.background div:nth-child(13){
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color1);
+  top: 28%;
+  left: 38%;
+  animation-duration: 13s;
+  transform-origin: -16vw 15vh;
+}
+
+.background div:nth-child(14){
+  background: var(--color2);
+  top: 74%;
+  left: 30%;
+  animation-duration: 12s;
+  transform-origin: -10vw 0vh;
+}
+
+.background div:nth-child(15){
+  background: var(--color3);
+  top: 73%;
+  left: 34%;
+  animation-duration: 52s;
+  transform-origin: -17vw -15vh;
+}
+
+.background div:nth-child(16) {
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color4);
+  top: 51%;
+  left: 26%;
+  animation-duration: 43s;
+  transform-origin: 9vw -8vh;
+}
+
+.background div:nth-child(17) {
+  background: var(--color5);
+  top: 37%;
+  left: 87%;
+  animation-duration: 52s;
+  transform-origin: 13vw -20vh;
+}
+
+
+.background div:nth-child(18) {
+  background: var(--color6);
+  top: 88%;
+  left: 17%;
+  animation-duration: 55s;
+  transform-origin: -4vw -15vh;
+}
+
+.background div:nth-child(19) {
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color1);
+  top: 84%;
+  left: 14%;
+  animation-duration: 49s;
+  transform-origin: -21vw -17vh;
+}
+
+.background div:nth-child(20) {
+  background: var(--color2);
+  top: 86%;
+  left: 10%;
+  animation-duration: 23s;
+  transform-origin: -21vw 25vh;
+}
+
+.background div:nth-child(21) {
+  background: var(--color3);
+  top: 88%;
+  left: 57%;
+  animation-duration: 8s;
+  transform-origin: 10vw 7vh;
+}
+
+.background div:nth-child(22) {
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color4);
+  top: 84%;
+  left: 47%;
+  animation-duration: 42s;
+  transform-origin: -11vw 24vh;
+}
+
+.background div:nth-child(23) {
+  background: var(--color5);
+  top: 57%;
+  left: 40%;
+  animation-duration: 44s;
+  transform-origin: 17vw -12vh;
+}
+
+.background div:nth-child(24) {
+  background: var(--color5);
+  top: 29%;
+  left: 45%;
+  animation-duration: 9s;
+  transform-origin: 11vw -2vh;
+}
+
+.background div:nth-child(25) {
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color1);
+  top: 89%;
+  left: 82%;
+  animation-duration: 6s;
+  transform-origin: -7vw 1vh;
+}
+
+.background div:nth-child(26) {
+  background: var(--color2);
+  top: 90%;
+  left: 29%;
+  animation-duration: 15s;
+  transform-origin: -14vw -22vh;
+}
+
+.background div:nth-child(27) {
+  background: var(--color3);
+  top: 64%;
+  left: 47%;
+  animation-duration: 45s;
+  transform-origin: 21vw 3vh;
+}
+
+.background div:nth-child(28) {
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin ;
+  background: var(--color4);
+  top: 55%;
+  left: 26%;
+  animation-duration: 20s;
+  transform-origin: -1vw 0vh;
+}
+
+.background div:nth-child(29) {
+  background: var(--color5);
+  top: 70%;
+  left: 71%;
+  animation-duration: 11s;
+  transform-origin: -11vw 8vh;
+}
+
+@keyframes move {
+  100% {
+      transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}

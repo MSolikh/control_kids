@@ -1,0 +1,220 @@
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import {  useNavigate } from "react-router-dom";
+import Bgr from '../Bgr/Bgr';
+import "./Login.css"
+import logo from './image/logo.png';
+import ru from './image/russian-flag.png';
+import en from './image/usa-flag.png';
+import uz from './image/uz-flag.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
+// 'Kategoriyalardan birini tanglang!!!'
+export default function Login() {
+
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+  const [responseData, setResponseData] = useState(null);
+  const navigate = useNavigate();
+  const notify = () => toast.warn('Kategoriyalardan birini tanglang!!!', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
+  useEffect(() => {
+    setSelectedCheckboxes(uzLang); // Устанавливаем узбекский язык по умолчанию при загрузке компонента
+  }, []); 
+
+  const sendDataToServer = async () => {
+    if(selectedCheckboxes.length === 0){
+      notify();
+      console.log("At least one checkbox must be selected");
+      return;
+    }
+
+    try {
+      const selectedCategories = selectedCheckboxes.map(index => {
+        switch(index) {
+          case '1':
+            return 'sport';
+          case '2':
+            return 'ta\'lim';
+          case '3':
+            return 'o\'yin';
+          case '4':
+            return 'kulgu';
+          case '5':
+            return 'multfilmlar';
+          case '6':
+            return '0+';    
+          default:
+            return ''; // Если индекс не совпадает ни с одним из известных, вернуть пустую строку
+        }
+      });
+
+      const response = await axios.post('http://localhost/give_url.php', selectedCategories);
+      setResponseData(response.data);
+
+      localStorage.setItem('token', response.data);
+      
+      navigate('/');
+
+      console.log(response.data);
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setSelectedCheckboxes((prevSelected) => [...prevSelected, String(value)]);
+    } else {
+      setSelectedCheckboxes((prevSelected) =>
+        prevSelected.filter((checkbox) => checkbox !== String(value))
+      );
+    }
+  };
+  
+  const uzLang = ['sport', `ta'lim`, "o'yin-kulgu", "multfilmlar", "0+"];
+  const ruLang = ["Спорт", "Обучениюший", "Развлечения", "Мультфилмы", "0+"];
+  const enLang = ["Sport", 'Educational', "Attractive", "Cartoon", "0+"]
+  
+  const handleLanguageChange = (lang) => {
+    switch(lang) {
+      case 'uz':
+        setSelectedCheckboxes(uzLang);
+        break;
+      case 'ru':
+        setSelectedCheckboxes(ruLang);
+        break;
+      case 'en':
+        setSelectedCheckboxes(enLang);
+        break;
+      default:
+        setSelectedCheckboxes(uzLang); // По умолчанию выбираем узбекский язык
+    }
+  };
+
+  return (
+  <>
+    <Bgr />
+
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      transition="Bounce"
+    />
+  <ToastContainer />
+
+    <div className="login-container">   
+      <div className="card">
+        <div className="cardInfo">
+          <img src={logo} />
+          
+          <h1>Control Kids</h1>
+        </div>
+        <div className="cardLogin">
+          <div className="cardText">
+            <h1>Hello!</h1>
+            <p>We are really happy to see you again!</p>
+          </div>
+          <div className="lang">
+              <a href="#" onClick={() => handleLanguageChange('uz')}><img src={uz} alt="Uzbek flag" /></a>
+              <a href="#" onClick={() => handleLanguageChange('ru')}><img src={ru} alt="Russian flag" /></a>
+              <a href="#" onClick={() => handleLanguageChange('en')}><img src={en} alt="USA flag" /></a>
+            </div>
+          <form className='form'>
+          {selectedCheckboxes.map((item, index) => (
+                <div className='check' key={index}>
+                  <input type="checkbox" value={index + 1} onChange={handleCheckboxChange} />
+                  <label htmlFor={`checkbox${index + 1}`}>{item}</label>
+                </div>
+              ))}
+          </form>
+          <button className='login-btn' onClick={sendDataToServer}>Enter</button>
+        </div>
+      </div>
+    </div>
+  </> 
+  )
+}
+
+
+
+  const uzLang = ['sport', `ta'lim`, "o'yin", "kulgu", "multfilmlar", "0+"];
+  const ruLang = ["Спорт", "Обучениюший", "Развлечения", "Мультфилмы", "0+"];
+  const enLang = ["Sport", 'Educational', "Attractive", "Cartoon", "0+"];
+
+
+const videoUrls = [
+    'https://www.youtube.com/embed/Vr-WuWvBJuI',
+    'https://www.youtube.com/embed/RreDKUSkR00',
+    'https://www.youtube.com/embed/CpWAAyCw9FU'
+  ];
+
+
+  =============================== PHP =================
+  <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
+$postData = json_decode(file_get_contents('php://input'), true);
+// Проверяем, была ли отправлена форма методом POST
+$postDataString = implode(",", $postData);
+// Если запрос - предварительный запрос (preflight request)
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    // Отправляем необходимые заголовки CORS
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type");
+    exit;
+}
+
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type");
+
+$conn = new mysqli("localhost", "root", "", "ckids");
+
+if (mysqli_connect_error()) {
+    echo "Ошибка подключения: " . mysqli_connect_error();
+    exit();
+} else {
+    $sql = "SELECT `url` FROM urls WHERE id IN ($postDataString)";
+
+    $result = $conn->query($sql);
+
+    if ($result === false) {
+        echo "Ошибка выполнения запроса: " . $conn->error;
+    } elseif ($result->num_rows <= 0) {
+        echo "База пуста";
+    } else {
+        $dataUrl = array();
+        
+        while ($row = $result->fetch_assoc()) {
+            $dataUrl[] = $row;
+        }
+
+        echo json_encode($dataUrl);
+    }
+
+    $conn->close();
+}
+?>
